@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"spreadaurora\\Settings\\": "src"
+			"Spreadaurora\\Settings\\": "src"
 		}
 	},
 	"scripts": {
