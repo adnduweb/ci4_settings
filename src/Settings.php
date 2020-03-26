@@ -72,6 +72,10 @@ class Settings
 	// initiate library, check for existing session
 	public function __construct(BaseConfig $config, ConnectionInterface $db = null)
 	{
+		if (getenv('app.baseURL') == 'https://www.exemple.com' || empty(getenv('database.default.database'))) {
+			return false;
+		}
+
 		// save configuration
 		$this->config = $config;
 
@@ -98,10 +102,20 @@ class Settings
 	// fetches the setting template from the settings table and handles errors
 	public function getTemplate(string $name)
 	{
-		if (empty($name)):
-			if ($this->config->silent):
+		if (getenv('app.baseURL') == 'https://www.exemple.com' || empty(getenv('database.default.database'))) {
+			return false;
+		}
+		//print_r($this->builder);
+		if (!db_connect()->tableExists('sessions')) {
+			// some code...
+			return false;
+		}
+
+		//exit;
+		if (empty($name)) :
+			if ($this->config->silent) :
 				return null;
-			else:
+			else :
 				throw SettingsException::forMissingName();
 			endif;
 		endif;
@@ -112,10 +126,10 @@ class Settings
 
 		// fetch from the database
 		$setting = $this->model->where('name', $name)->first();
-		if (empty($setting)):
-			if ($this->config->silent):
+		if (empty($setting)) :
+			if ($this->config->silent) :
 				return null;
-			else:
+			else :
 				throw SettingsException::forUnmatchedName($name);
 			endif;
 		endif;
@@ -136,10 +150,10 @@ class Settings
 	}
 
 	// magic wrapper for getting a setting
-    public function __get(string $name)
-    {
+	public function __get(string $name)
+	{
 		return $this->get($name);
-    }
+	}
 
 	// get a setting - checks session, then user, then global
 	public function get(string $name)
@@ -156,22 +170,22 @@ class Settings
 			return $content;
 
 		// global settings cannot be overridden
-		if ($setting->scope=="global")
+		if ($setting->scope == "global")
 			return $this->cache($cacheKey, $setting->content);
 
 		// check if there's a setting for this session
 		$content = $this->getSession($setting);
-		if ($content!==null)
+		if ($content !== null)
 			return $this->cache($cacheKey, $content);
 
 		// check if there's a user-defined setting
 		$content = $this->getUser($setting, $userId);
-		if ($content!==null)
+		if ($content !== null)
 			return $this->cache($cacheKey, $content);
 
 		// fall back to template setting
 		return $this->cache($cacheKey, $setting->content);
-    }
+	}
 
 	// check if there is a $_SESSION entry
 	protected function getSession($setting)
@@ -184,7 +198,7 @@ class Settings
 	protected function getUser($setting, int $userId = null)
 	{
 		// if no user is provided try to get the current user ID
-		if (! is_numeric($userId))
+		if (!is_numeric($userId))
 			$userId = $this->sessionUserId();
 
 		// look for a user-defined setting
@@ -199,14 +213,14 @@ class Settings
 	}
 
 	// magic wrapper for changing a setting
-    public function __set(string $name, $content): bool
-    {
+	public function __set(string $name, $content): bool
+	{
 		return $this->set($name, $content);
-    }
+	}
 
 	// change a setting, null removes
-    public function set(string $name, $content): bool
-    {
+	public function set(string $name, $content): bool
+	{
 		$setting = $this->getTemplate($name);
 		if (empty($setting))
 			return false;
@@ -215,46 +229,46 @@ class Settings
 		$cacheKey = "settings:contents:{$setting->name}:{$userId}";
 
 		switch ($setting->scope):
-			// global scope changes the template in the settings table
+				// global scope changes the template in the settings table
 			case "global":
 				$this->setGlobal($setting, $content);
 				$this->cache($cacheKey, $content);
-			break;
+				break;
 
-			// user scope changes the session and writes back to the database
+				// user scope changes the session and writes back to the database
 			case "user":
 				$this->setSession($setting, $content);
 				$this->setUser($setting, $content);
 				$this->cache($cacheKey, $content);
-			break;
+				break;
 
 			case "session":
-				$this->setSession($setting,$content);
+				$this->setSession($setting, $content);
 				$this->cache($cacheKey, $content);
-			break;
+				break;
 
-			// something borked
+				// something borked
 			default:
 				return false;
 		endswitch;
 
 		return true;
-    }
+	}
 
 	// change a global setting template (updates content in settings table)
 	protected function setGlobal($setting, $content = null): ?bool
 	{
 		// don't alter protected templates
-		if ($setting->protected):
-			if ($this->config->silent):
+		if ($setting->protected) :
+			if ($this->config->silent) :
 				return null;
-			else:
+			else :
 				throw SettingsException::forProtectionViolation($setting->name);
 			endif;
 		endif;
 
 		// check for a removal request
-		if ($content === null):
+		if ($content === null) :
 			$this->model->delete($setting->id);
 			cache()->delete("settings:templates:{$setting->name}");
 			return true;
@@ -281,7 +295,7 @@ class Settings
 	protected function setUser($setting, $content = null, int $userId = null): bool
 	{
 		// if no user is provided try to get the current user ID
-		if (! is_numeric($userId))
+		if (!is_numeric($userId))
 			$userId = $this->sessionUserId();
 
 		// remove any existing setting
