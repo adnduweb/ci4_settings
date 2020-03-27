@@ -1,37 +1,39 @@
-<?php namespace Spreadaurora\Settings;
+<?php
+
+namespace Spreadaurora\Settings;
 
 /***
-* Name: Settings
-* Author: Matthew Gatner
-* Contact: mgatner@Spreadaurorasoftware.com
-* Created: 2019-04-07
-*
-* Description:  Lightweight settings management for CodeIgniter 4
-*
-* Requirements:
-* 	>= PHP 7.1
-* 	>= CodeIgniter 4.0
-*	Preconfigured, autoloaded Database
-*	`settings` and `settings_users` tables (run migrations)
-*
-* Configuration:
-* 	Use Config/Settings.php to override default behavior
-* 	Run migrations to update database tables:
-* 		> php spark migrate:latest -all
-*
-* Description:
-* Settings exist at three tiered levels: Session, User, Global
-* 	Global settings cannot be overriden by users
-* 	User settings automatically write back to the database to persist between sessions
-* 	Session settings only last as long as a session
-* Gets return NULL for missing/unmatched settings
-* Sets use NULL to remove values
+ * Name: Settings
+ * Author: Matthew Gatner
+ * Contact: mgatner@Spreadaurorasoftware.com
+ * Created: 2019-04-07
+ *
+ * Description:  Lightweight settings management for CodeIgniter 4
+ *
+ * Requirements:
+ * 	>= PHP 7.1
+ * 	>= CodeIgniter 4.0
+ *	Preconfigured, autoloaded Database
+ *	`settings` and `settings_users` tables (run migrations)
+ *
+ * Configuration:
+ * 	Use Config/Settings.php to override default behavior
+ * 	Run migrations to update database tables:
+ * 		> php spark migrate:latest -all
+ *
+ * Description:
+ * Settings exist at three tiered levels: Session, User, Global
+ * 	Global settings cannot be overriden by users
+ * 	User settings automatically write back to the database to persist between sessions
+ * 	Session settings only last as long as a session
+ * Gets return NULL for missing/unmatched settings
+ * Sets use NULL to remove values
 
-* @package CodeIgniter4-Settings
-* @author Matthew Gatner
-* @link https://github.com/Spreadaurorasoftware/codeigniter4-settings
-*
-***/
+ * @package CodeIgniter4-Settings
+ * @author Matthew Gatner
+ * @link https://github.com/Spreadaurorasoftware/codeigniter4-settings
+ *
+ ***/
 
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Config\Services;
@@ -134,7 +136,7 @@ class Settings
 			endif;
 		endif;
 
-		cache("settings:templates:{$name}", $setting);
+		$this->cache("settings:templates:{$name}", $setting);
 		return $setting;
 	}
 
