@@ -1,4 +1,4 @@
-<?php namespace Spreadaurora\Settings\Commands;
+<?php namespace Adnduweb\Ci4_settings\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;

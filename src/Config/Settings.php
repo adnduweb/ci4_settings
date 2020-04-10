@@ -1,4 +1,4 @@
-<?php namespace Spreadaurora\Settings\Config;
+<?php namespace Adnduweb\Ci4_settings\Config;
 
 use CodeIgniter\Config\BaseConfig;
 

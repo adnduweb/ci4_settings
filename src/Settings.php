@@ -1,6 +1,6 @@
 <?php
 
-namespace Spreadaurora\Settings;
+namespace Adnduweb\Ci4_settings;
 
 /***
  * Name: Settings
@@ -37,8 +37,8 @@ namespace Spreadaurora\Settings;
 
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Config\Services;
-use Spreadaurora\Settings\Models\SettingModel;
-use Spreadaurora\Settings\Exceptions\SettingsException;
+use Adnduweb\Ci4_settings\Models\SettingModel;
+use Adnduweb\Ci4_settings\Exceptions\SettingsException;
 
 /*** CLASS ***/
 class Settings
@@ -46,7 +46,7 @@ class Settings
 	/**
 	 * Our configuration instance.
 	 *
-	 * @var \Spreadaurora\Settings\Config\Settings
+	 * @var \Adnduweb\Ci4_settings\Config\Settings
 	 */
 	protected $config;
 
@@ -67,7 +67,7 @@ class Settings
 	/**
 	 * The setting model used to fetch Settings templates.
 	 *
-	 * @var \Spreadaurora\Settings\Models\SettingModel
+	 * @var \Adnduweb\Ci4_settings\Models\SettingModel
 	 */
 	protected $model;
 

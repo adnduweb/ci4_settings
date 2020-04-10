@@ -1,5 +1,5 @@
 {
-	"name": "spreadaurora/settings",
+	"name": "adnduweb/ci4_settings",
 	"description": "Lightweight settings management for CodeIgniter 4",
 	"keywords": [
 		"codeigniter",
@@ -23,7 +23,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Spreadaurora\\Settings\\": "src"
+			"Adnduweb\\Ci4_settings\\": "src"
 		}
 	},
 	"scripts": {

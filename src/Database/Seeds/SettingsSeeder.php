@@ -1,6 +1,6 @@
-<?php namespace Spreadaurora\Settings\Database\Seeds;
+<?php namespace Adnduweb\Ci4_settings\Database\Seeds;
 
-use Spreadaurora\Settings\Models\SettingModel;
+use Adnduweb\Ci4_settings\Models\SettingModel;
 
 class SettingsSeeder extends \CodeIgniter\Database\Seeder
 {

@@ -1,4 +1,4 @@
-<?php namespace Spreadaurora\Settings\Database\Migrations;
+<?php namespace Adnduweb\Ci4_settings\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 

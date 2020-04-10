@@ -1,4 +1,4 @@
-<?php namespace Spreadaurora\Settings\Exceptions;
+<?php namespace Adnduweb\Ci4_settings\Exceptions;
 
 use CodeIgniter\Exceptions\ExceptionInterface;
 use CodeIgniter\Exceptions\FrameworkException;

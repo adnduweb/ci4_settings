@@ -1,8 +1,8 @@
-<?php namespace Spreadaurora\Settings\Commands;
+<?php namespace Adnduweb\Ci4_settings\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
-use Spreadaurora\Settings\Models\SettingModel;
+use Adnduweb\Ci4_settings\Models\SettingModel;
 
 class SettingsAdd extends BaseCommand
 {

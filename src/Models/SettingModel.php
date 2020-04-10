@@ -1,4 +1,4 @@
-<?php namespace Spreadaurora\Settings\Models;
+<?php namespace Adnduweb\Ci4_settings\Models;
 
 use CodeIgniter\Model;
 
