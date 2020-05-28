@@ -1,9 +1,9 @@
-# Spreadaurora\Settings
+# adnduweb\Settings
 Lightweight settings management for CodeIgniter 4
 
 ## Quick Start
 
-1. Install with Composer: `> composer require spreadaurora/settings`
+1. Install with Composer: `> composer require adnduweb/settings`
 2. Update the database: `> php spark migrate -all`
 3. Add settings: `> php spark settings:add timezone user America/New_York`
 4. Load the service: `$settings = service('settings');`
@@ -22,7 +22,7 @@ Provides ready-to-use settings management for CodeIgniter 4
 
 Install easily via Composer to take advantage of CodeIgniter 4's autoloading capabilities
 and always be up-to-date:
-* `> composer require spreadaurora/settings`
+* `> composer require adnduweb/settings`
 
 Or, install manually by downloading the source files and adding the directory to
 `app/Config/Autoload.php`.
@@ -46,7 +46,7 @@ add them manually with the CLI command `php spark settings:add`.
 **Settings** also comes with a database seeder for some recommended default templates. Run
 the seeder from the command line:
 
-	php spark db:seed \\Spreadaurora\\Settings\\Database\\Seeds\\SettingsSeeder
+	php spark db:seed \\Adnduweb\\Settings\\Database\\Seeds\\SettingsSeeder
 
 This will add appropriately-scoped templates and default values for the following settings:
 
