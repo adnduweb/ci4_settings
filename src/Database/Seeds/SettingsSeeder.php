@@ -1,4 +1,6 @@
-<?php namespace Adnduweb\Ci4_settings\Database\Seeds;
+<?php
+
+namespace Adnduweb\Ci4_settings\Database\Seeds;
 
 use Adnduweb\Ci4_settings\Models\SettingModel;
 
@@ -104,12 +106,10 @@ class SettingsSeeder extends \CodeIgniter\Database\Seeder
 
 		// Check for and create project setting templates
 		$settings = new SettingModel();
-		foreach ($rows as $row)
-		{
+		foreach ($rows as $row) {
 			$setting = $settings->where('name', $row['name'])->first();
 
-			if (empty($setting))
-			{
+			if (empty($setting)) {
 				// No setting - add the row
 				$settings->insert($row);
 			}
