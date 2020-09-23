@@ -123,7 +123,7 @@ class Settings
 		endif;
 
 		// check cache
-		if ($setting = cache("settings:templates:{$name}"))
+		if ($setting = cache("settings-templates-{$name}"))
 			return $setting;
 
 		// fetch from the database
@@ -136,7 +136,7 @@ class Settings
 			endif;
 		endif;
 
-		$this->cache("settings:templates:{$name}", $setting);
+		$this->cache("settings-templates-{$name}", $setting);
 		return $setting;
 	}
 
@@ -166,7 +166,7 @@ class Settings
 
 		// check for a cached version
 		$userId = $this->sessionUserId();
-		$cacheKey = "settings:contents:{$setting->name}:{$userId}";
+		$cacheKey = "settings-contents-{$setting->name}-{$userId}";
 		$content = cache($cacheKey);
 		if ($content !== null)
 			return $content;
@@ -193,7 +193,7 @@ class Settings
 	protected function getSession($setting)
 	{
 		// prefix to avoid collision
-		return $this->session->get('settings:contents:' . $setting->name) ?? null;
+		return $this->session->get('settings-contents-' . $setting->name) ?? null;
 	}
 
 	// checks the database for a user-defined setting
@@ -228,7 +228,7 @@ class Settings
 			return false;
 
 		$userId = $this->sessionUserId();
-		$cacheKey = "settings:contents:{$setting->name}:{$userId}";
+		$cacheKey = "settings-contents-{$setting->name}-{$userId}";
 
 		switch ($setting->scope):
 				// global scope changes the template in the settings table
@@ -272,7 +272,7 @@ class Settings
 		// check for a removal request
 		if ($content === null) :
 			$this->model->delete($setting->id);
-			cache()->delete("settings:templates:{$setting->name}");
+			cache()->delete("settings-templates-{$setting->name}");
 			return true;
 		endif;
 
@@ -287,9 +287,9 @@ class Settings
 	protected function setSession($setting, $content = null): bool
 	{
 		if ($content === null)
-			$this->session->remove('settings:contents:' . $setting->name);
+			$this->session->remove('settings-contents-' . $setting->name);
 		else
-			$this->session->set('settings:contents:' . $setting->name, $content);
+			$this->session->set('settings-contents-' . $setting->name, $content);
 		return true;
 	}
 
