@@ -36,7 +36,6 @@ namespace Adnduweb\Ci4_settings;
  ***/
 
 use CodeIgniter\Config\BaseConfig;
-use CodeIgniter\Config\Services;
 use Adnduweb\Ci4_settings\Models\SettingModel;
 use Adnduweb\Ci4_settings\Exceptions\SettingsException;
 
@@ -82,7 +81,7 @@ class Settings
 		$this->config = $config;
 
 		// initiate the Session library
-		$this->session = Services::session();
+		$this->session = \Config\Services::session();
 
 		// If no db connection passed in, use the default database group.
 		$db = db_connect($db);
@@ -98,17 +97,20 @@ class Settings
 	{
 		if (is_cli())
 			return -1;
-		return $this->session->get($this->config->sessionUserId) ?? 0;
+
+		//return $this->session->get($this->config->sessionUserId) ?? 0;
+		//@todo Bug refresh F5 not defined  method get
+		return service('session')->get(config('settings')->sessionUserId) ?? 0;
 	}
 
 	// fetches the setting template from the settings table and handles errors
 	public function getTemplate(string $name)
 	{
-		if (getenv('app.baseURL') == 'https://www.exemple.com' || empty(getenv('database.default.database'))) {
-			return false;
-		}
+		// if (getenv('app.baseURL') == 'https://www.exemple.com' || empty(getenv('database.default.database'))) {
+		// 	return false;
+		// }
 		//print_r($this->builder);
-		if (!db_connect()->tableExists('sessions')) {
+		if (!db_connect()->tableExists('ci_sessions')) {
 			// some code...
 			return false;
 		}
@@ -154,15 +156,21 @@ class Settings
 	// magic wrapper for getting a setting
 	public function __get(string $name)
 	{
+		//log_message('error', print_r(service('request')->uri->getSegments(), true));
+		//log_message('error', print_r($name, true));
 		return $this->get($name);
 	}
 
 	// get a setting - checks session, then user, then global
 	public function get(string $name)
 	{
+		log_message('error', print_r($name, true));
 		$setting = $this->getTemplate($name);
+		//echo 'fsdgsdgsfdg'; exit;
 		if (empty($setting))
 			return null;
+
+		
 
 		// check for a cached version
 		$userId = $this->sessionUserId();
