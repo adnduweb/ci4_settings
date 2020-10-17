@@ -1,8 +1,8 @@
 <?php
 
-namespace Adnduweb\Ci4_settings\Database\Seeds;
+namespace Adnduweb\Settings\Database\Seeds;
 
-use Adnduweb\Ci4_settings\Models\SettingModel;
+use Adnduweb\Settings\Models\SettingModel;
 
 class SettingsSeeder extends \CodeIgniter\Database\Seeder
 {

@@ -1,8 +1,8 @@
-<?php namespace Adnduweb\Ci4_settings\Commands;
+<?php namespace Adnduweb\Settings\Commands;
 
 use CodeIgniter\CLI\BaseCommand;
 use CodeIgniter\CLI\CLI;
-use Adnduweb\Ci4_settings\Models\SettingModel;
+use Adnduweb\Settings\Models\SettingModel;
 
 class SettingsAdd extends BaseCommand
 {

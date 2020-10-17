@@ -1,4 +1,4 @@
-<?php namespace Adnduweb\Ci4_settings\Exceptions;
+<?php namespace Adnduweb\Settings\Exceptions;
 
 use CodeIgniter\Exceptions\ExceptionInterface;
 use CodeIgniter\Exceptions\FrameworkException;

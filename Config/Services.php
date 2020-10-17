@@ -1,4 +1,4 @@
-<?php namespace Adnduweb\Ci4_settings\Config;
+<?php namespace Adnduweb\Settings\Config;
 
 use CodeIgniter\Config\BaseService;
 use CodeIgniter\Database\ConnectionInterface;
@@ -16,6 +16,6 @@ class Services extends BaseService
 		if (empty($config))
 			$config = config('Settings');
 
-		return new \Adnduweb\Ci4_settings\Settings($config);
+		return new \Adnduweb\Settings\Settings($config);
 	}
 }

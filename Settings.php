@@ -1,6 +1,6 @@
 <?php
-
-namespace Adnduweb\Ci4_settings;
+echo 'fdgsdfgsdg'; exit;
+namespace Adnduweb\Settings;
 
 /***
  * Name: Settings
@@ -36,8 +36,8 @@ namespace Adnduweb\Ci4_settings;
  ***/
 
 use CodeIgniter\Config\BaseConfig;
-use Adnduweb\Ci4_settings\Models\SettingModel;
-use Adnduweb\Ci4_settings\Exceptions\SettingsException;
+use Adnduweb\Settings\Models\SettingModel;
+use Adnduweb\Settings\Exceptions\SettingsException;
 
 /*** CLASS ***/
 class Settings
@@ -45,7 +45,7 @@ class Settings
 	/**
 	 * Our configuration instance.
 	 *
-	 * @var \Adnduweb\Ci4_settings\Config\Settings
+	 * @var \Adnduweb\Settings\Config\Settings
 	 */
 	protected $config;
 
@@ -66,7 +66,7 @@ class Settings
 	/**
 	 * The setting model used to fetch Settings templates.
 	 *
-	 * @var \Adnduweb\Ci4_settings\Models\SettingModel
+	 * @var \Adnduweb\Settings\Models\SettingModel
 	 */
 	protected $model;
 
@@ -170,7 +170,7 @@ class Settings
 		if (empty($setting))
 			return null;
 
-		
+
 
 		// check for a cached version
 		$userId = $this->sessionUserId();

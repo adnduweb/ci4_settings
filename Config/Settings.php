@@ -1,4 +1,4 @@
-<?php namespace Adnduweb\Ci4_settings\Config;
+<?php namespace Adnduweb\Settings\Config;
 
 use CodeIgniter\Config\BaseConfig;
 
