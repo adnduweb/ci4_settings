@@ -1,5 +1,4 @@
 <?php
-echo 'fdgsdfgsdg'; exit;
 namespace Adnduweb\Settings;
 
 /***
