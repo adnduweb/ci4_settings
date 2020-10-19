@@ -1,4 +1,4 @@
-# adnduweb\Settings
+# Adnduweb\Ci4Settings
 Lightweight settings management for CodeIgniter 4
 
 ## Quick Start

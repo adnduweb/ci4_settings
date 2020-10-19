@@ -10,15 +10,14 @@
 		"role": "Developer"
 	}],
 	"require": {
-		"php": ">=7.2",
+		"php": ">=7.2"
 	},
 	"require-dev": {
 		"codeigniter4/framework": "dev-master"
 	},
-	
 	"autoload": {
 		"psr-4": {
-			"Adnduweb\\Settings\\" : ""
+			"Adnduweb\\Ci4Settings\\" : ""
 		}
 	},
 	"scripts": {

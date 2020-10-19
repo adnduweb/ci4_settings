@@ -1,6 +1,6 @@
 <?php
 echo 'fdgsdfgsdg'; exit;
-namespace Adnduweb\Settings;
+namespace Adnduweb\Ci4Settings;
 
 /***
  * Name: Settings
@@ -36,8 +36,8 @@ namespace Adnduweb\Settings;
  ***/
 
 use CodeIgniter\Config\BaseConfig;
-use Adnduweb\Settings\Models\SettingModel;
-use Adnduweb\Settings\Exceptions\SettingsException;
+use Adnduweb\Ci4Settings\Models\SettingModel;
+use Adnduweb\Ci4Settings\Exceptions\SettingsException;
 
 /*** CLASS ***/
 class Settings
@@ -45,7 +45,7 @@ class Settings
 	/**
 	 * Our configuration instance.
 	 *
-	 * @var \Adnduweb\Settings\Config\Settings
+	 * @var \Adnduweb\Ci4Settings\Config\Settings
 	 */
 	protected $config;
 
@@ -66,7 +66,7 @@ class Settings
 	/**
 	 * The setting model used to fetch Settings templates.
 	 *
-	 * @var \Adnduweb\Settings\Models\SettingModel
+	 * @var \Adnduweb\Ci4Settings\Models\SettingModel
 	 */
 	protected $model;
 

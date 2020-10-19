@@ -1,4 +1,4 @@
-<?php namespace Adnduweb\Settings\Models;
+<?php namespace Adnduweb\Ci4Settings\Models;
 
 use CodeIgniter\Model;
 
