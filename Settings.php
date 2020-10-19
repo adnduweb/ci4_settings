@@ -1,5 +1,5 @@
 <?php
-echo 'fdgsdfgsdg'; exit;
+
 namespace Adnduweb\Ci4Settings;
 
 /***
